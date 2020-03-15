@@ -9,4 +9,13 @@ function printResult(num: number): void {
 printResult(add(5, 12)); // Result: 17
 console.log(printResult(add(5, 12))); // undefined
 
+// let combineValues: Function; // declara interface Function
+let combineValues: (a: number, b:number) => number; // declara interface Function
+
+combineValues = add;
+// combineValues = printResult;
+// combineValues = 5;
+
+console.log(combineValues(8,8));
+
 // let someValue: undefined;
