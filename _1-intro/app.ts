@@ -1,35 +1,12 @@
-type Combinable = number | string; // type alias
-type ConversionDescriptor = 'as-number' | 'as-text';
-
-// (type1 | type2 | type3 | .. | typeN) // union type
-function combine(
-    input1: Combinable,
-    input2: Combinable,
-    resultConversion: ConversionDescriptor){ // sintaxe de Literal Type
-
-    let result;
-
-    if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number'){
-        result = +input1 + +input2;
-    } else {
-        result = input1.toString() + input2.toString();
-    }
-
-    return result;
-
-    // if (resultConversion === 'as-number') {
-    //     return +result; // força conversão de result para número
-    // } else {
-    //     return result.toString() // força conversão de result para string
-    // }
+function add(n1:number, n2:number): number {
+    return n1 + n2;
 }
 
-const combinedAges = combine(30, 26, 'as-number');
+function printResult(num: number): void {
+    console.log('Result: ' + num);
+}
 
-const combinedStringAges = combine('30', '26', 'as-number');
+printResult(add(5, 12)); // Result: 17
+console.log(printResult(add(5, 12))); // undefined
 
-const combinedNames = combine('Max', 'Anna', 'as-text');
-
-console.log(combinedAges);
-console.log(combinedNames);
-console.log(combinedStringAges);
+// let someValue: undefined;
