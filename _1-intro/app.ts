@@ -1,8 +1,11 @@
-// (type1 | type2 | type3 | .. | typeN)
+type Combinable = number | string; // type alias
+type ConversionDescriptor = 'as-number' | 'as-text';
+
+// (type1 | type2 | type3 | .. | typeN) // union type
 function combine(
-    input1: number | string,
-    input2: number | string,
-    resultConversion: 'as-number' | 'as-text'){ // sintaxe de Literal Type
+    input1: Combinable,
+    input2: Combinable,
+    resultConversion: ConversionDescriptor){ // sintaxe de Literal Type
 
     let result;
 
