@@ -1,15 +1,26 @@
 "use strict";
-var Department = /** @class */ (function () {
-    function Department(n) {
+class Department {
+    constructor(n) {
+        this.employees = []; // access modifier
         this.name = n;
     }
-    Department.prototype.describe = function () {
+    describe() {
         console.log('Department: ' + this.name);
-    };
-    return Department;
-}());
-var accounting = new Department('Accounting');
+    }
+    addEmployee(employee) {
+        this.employees.push(employee);
+    }
+    printEmployeesInformation() {
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+const accounting = new Department('Accounting');
 accounting.describe();
+accounting.addEmployee('Manu');
+accounting.addEmployee('Thiago');
+// accounting.employees[2] = 'Anna';
+accounting.printEmployeesInformation();
 // const accountingCopy = { describe: accounting.describe };
-var accountingCopy = { name: 'DUMMY', describe: accounting.describe };
-accountingCopy.describe();
+// const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
+// accountingCopy.describe();
