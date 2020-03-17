@@ -22,16 +22,51 @@ class Department {
     }
 }
 
-const accounting = new Department('1', 'Accounting');
+class ITDepartment extends Department {
+    constructor(id: string, public admins: string[]){
+        super(id, 'Information Technology');
+        this.admins = admins;
+    }
 
-accounting.describe();
+    describeAdmins(this: ITDepartment){
+        console.log(`IT Administrators: ${this.admins}`);
+    }
+}
 
-accounting.addEmployee('Manu');
-accounting.addEmployee('Thiago');
+class AccountingDepartment extends Department {
+    constructor(id: string, public reports: string[]){
+        super(id, 'Accounting');
+        this.reports = reports;
+    }
+
+    addReport(text: string){
+        this.reports.push(text);
+    }
+
+    printReports() {
+        console.log(this.reports);
+    }
+}
+
+// const accounting = new Department('1', 'Accounting');
+const itDepartment = new ITDepartment('2', ['Thiago', 'Joane']);
+
+// accounting.describe();
+itDepartment.describe();
+itDepartment.describeAdmins();
+
+// accounting.addEmployee('Manu');
+// accounting.addEmployee('Thiago');
 
 // accounting.employees[2] = 'Anna';
 
-accounting.printEmployeesInformation();
+// accounting.printEmployeesInformation();
+
+const accounting = new AccountingDepartment('1', []);
+
+accounting.addReport('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate quam eligendi ad consequatur veritatis fugit! Quos impedit nam nisi beatae possimus dolorem amet voluptatem aliquid vitae, incidunt inventore, eveniet sed?');
+
+accounting.printReports();
 
 // const accountingCopy = { describe: accounting.describe };
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
