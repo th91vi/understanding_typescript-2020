@@ -36,6 +36,12 @@ class AccountingDepartment extends Department {
         this.reports = reports;
         this.reports = reports;
     }
+    addEmployee(name) {
+        if (name === 'Manu') {
+            return;
+        }
+        this.employees.push(name);
+    }
     addReport(text) {
         this.reports.push(text);
     }
@@ -48,13 +54,13 @@ const itDepartment = new ITDepartment('2', ['Thiago', 'Joane']);
 // accounting.describe();
 itDepartment.describe();
 itDepartment.describeAdmins();
-// accounting.addEmployee('Manu');
-// accounting.addEmployee('Thiago');
 // accounting.employees[2] = 'Anna';
-// accounting.printEmployeesInformation();
 const accounting = new AccountingDepartment('1', []);
 accounting.addReport('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate quam eligendi ad consequatur veritatis fugit! Quos impedit nam nisi beatae possimus dolorem amet voluptatem aliquid vitae, incidunt inventore, eveniet sed?');
 accounting.printReports();
+accounting.addEmployee('Manu');
+accounting.addEmployee('Thiago');
+accounting.printEmployeesInformation();
 // const accountingCopy = { describe: accounting.describe };
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
 // accountingCopy.describe();
