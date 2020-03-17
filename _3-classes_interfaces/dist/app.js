@@ -42,6 +42,13 @@ class AccountingDepartment extends Department {
         this.reports = reports;
         this.lastReport = reports[0];
     }
+    static getInstance() {
+        if (AccountingDepartment.instance) {
+            return this.instance;
+        }
+        this.instance = new AccountingDepartment('1', []);
+        return this.instance;
+    }
     get mostRecentReport() {
         if (this.lastReport) {
             return this.lastReport;
@@ -79,7 +86,8 @@ const itDepartment = new ITDepartment('2', ['Thiago', 'Joane']);
 itDepartment.describe();
 itDepartment.describeAdmins();
 // accounting.employees[2] = 'Anna';
-const accounting = new AccountingDepartment('1', []);
+// const accounting = new AccountingDepartment('1', []);
+const accounting = AccountingDepartment.getInstance();
 // accounting.mostRecentReport;
 accounting.mostRecentReport = "Umami next level locavore, shoreditch mixtape thundercats plaid snackwave pinterest chia. Cronut la croix ethical, tattooed letterpress tofu pitchfork four dollar toast schlitz. Sustainable tote bag letterpress, succulents microdosing PBR&B bespoke adaptogen raclette yr pinterest williamsburg. Photo booth prism letterpress VHS drinking vinegar, direct trade XOXO hell of gluten-free venmo tumeric. Polaroid you probably haven't heard of them jianbing art party salvia four loko intelligentsia tote bag.";
 accounting.addReport('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate quam eligendi ad consequatur veritatis fugit! Quos impedit nam nisi beatae possimus dolorem amet voluptatem aliquid vitae, incidunt inventore, eveniet sed?');
