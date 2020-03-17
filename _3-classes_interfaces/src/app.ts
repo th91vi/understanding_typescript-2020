@@ -1,16 +1,20 @@
-class Department {
+abstract class Department {
+    static fiscalYear = 2020;
+
     // private id: string; // access modifier
     // private name: string; // access modifier
     protected employees: string[] = []; // access modifier
 
-    constructor(public readonly id: string, public name: string){
+    constructor(protected readonly id: string, public name: string){
         // this.id = id;
         // this.name = name;
     }
 
-    describe(this: Department) {
-        console.log(`Department: ${this.name}. Id: ${this.id}`);
+    static createEmployee (name: string){
+        return {name: name};
     }
+
+    abstract describe(this: Department): void;
 
     addEmployee(employee: string){
         this.employees.push(employee);
@@ -28,6 +32,10 @@ class ITDepartment extends Department {
         this.admins = admins;
     }
 
+    describe() {
+        console.log('IT Department - ID: ' + this.id);
+    };
+
     describeAdmins(this: ITDepartment){
         console.log(`IT Administrators: ${this.admins}`);
     }
@@ -35,6 +43,12 @@ class ITDepartment extends Department {
 
 class AccountingDepartment extends Department {
     private lastReport: string;
+
+    constructor(id: string, public reports: string[]){
+        super(id, 'Accounting');
+        this.reports = reports;
+        this.lastReport = reports[0];
+    }
 
     get mostRecentReport() {
         if (this.lastReport) {
@@ -50,11 +64,8 @@ class AccountingDepartment extends Department {
         this.addReport(value);
     }
 
-
-    constructor(id: string, public reports: string[]){
-        super(id, 'Accounting');
-        this.reports = reports;
-        this.lastReport = reports[0];
+    describe(){
+        console.log('Accounting Department - ID: ' + this.id)
     }
 
     addEmployee(name: string) {
@@ -74,6 +85,9 @@ class AccountingDepartment extends Department {
     }
 }
 
+const employee1 = Department.createEmployee('Max');
+console.log(`Generic employee: ${employee1.name}. Hired in: ${Department.fiscalYear}`);
+
 // const accounting = new Department('1', 'Accounting');
 const itDepartment = new ITDepartment('2', ['Thiago', 'Joane']);
 
@@ -87,7 +101,7 @@ const accounting = new AccountingDepartment('1', []);
 
 // accounting.mostRecentReport;
 
-accounting.mostRecentReport = '';
+accounting.mostRecentReport = "Umami next level locavore, shoreditch mixtape thundercats plaid snackwave pinterest chia. Cronut la croix ethical, tattooed letterpress tofu pitchfork four dollar toast schlitz. Sustainable tote bag letterpress, succulents microdosing PBR&B bespoke adaptogen raclette yr pinterest williamsburg. Photo booth prism letterpress VHS drinking vinegar, direct trade XOXO hell of gluten-free venmo tumeric. Polaroid you probably haven't heard of them jianbing art party salvia four loko intelligentsia tote bag.";
 
 accounting.addReport('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate quam eligendi ad consequatur veritatis fugit! Quos impedit nam nisi beatae possimus dolorem amet voluptatem aliquid vitae, incidunt inventore, eveniet sed?');
 
@@ -95,8 +109,9 @@ accounting.printReports();
 
 accounting.addEmployee('Manu');
 accounting.addEmployee('Thiago');
+accounting.describe();
 
-accounting.printEmployeesInformation();
+// accounting.printEmployeesInformation();
 
 // const accountingCopy = { describe: accounting.describe };
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };

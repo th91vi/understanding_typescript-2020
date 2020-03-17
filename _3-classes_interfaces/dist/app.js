@@ -9,8 +9,8 @@ class Department {
         // this.id = id;
         // this.name = name;
     }
-    describe() {
-        console.log(`Department: ${this.name}. Id: ${this.id}`);
+    static createEmployee(name) {
+        return { name: name };
     }
     addEmployee(employee) {
         this.employees.push(employee);
@@ -20,12 +20,17 @@ class Department {
         console.log(this.employees);
     }
 }
+Department.fiscalYear = 2020;
 class ITDepartment extends Department {
     constructor(id, admins) {
         super(id, 'Information Technology');
         this.admins = admins;
         this.admins = admins;
     }
+    describe() {
+        console.log('IT Department - ID: ' + this.id);
+    }
+    ;
     describeAdmins() {
         console.log(`IT Administrators: ${this.admins}`);
     }
@@ -49,6 +54,9 @@ class AccountingDepartment extends Department {
         }
         this.addReport(value);
     }
+    describe() {
+        console.log('Accounting Department - ID: ' + this.id);
+    }
     addEmployee(name) {
         if (name === 'Manu') {
             return;
@@ -63,6 +71,8 @@ class AccountingDepartment extends Department {
         console.log(this.reports);
     }
 }
+const employee1 = Department.createEmployee('Max');
+console.log(`Generic employee: ${employee1.name}. Hired in: ${Department.fiscalYear}`);
 // const accounting = new Department('1', 'Accounting');
 const itDepartment = new ITDepartment('2', ['Thiago', 'Joane']);
 // accounting.describe();
@@ -71,12 +81,13 @@ itDepartment.describeAdmins();
 // accounting.employees[2] = 'Anna';
 const accounting = new AccountingDepartment('1', []);
 // accounting.mostRecentReport;
-accounting.mostRecentReport = '';
+accounting.mostRecentReport = "Umami next level locavore, shoreditch mixtape thundercats plaid snackwave pinterest chia. Cronut la croix ethical, tattooed letterpress tofu pitchfork four dollar toast schlitz. Sustainable tote bag letterpress, succulents microdosing PBR&B bespoke adaptogen raclette yr pinterest williamsburg. Photo booth prism letterpress VHS drinking vinegar, direct trade XOXO hell of gluten-free venmo tumeric. Polaroid you probably haven't heard of them jianbing art party salvia four loko intelligentsia tote bag.";
 accounting.addReport('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate quam eligendi ad consequatur veritatis fugit! Quos impedit nam nisi beatae possimus dolorem amet voluptatem aliquid vitae, incidunt inventore, eveniet sed?');
 accounting.printReports();
 accounting.addEmployee('Manu');
 accounting.addEmployee('Thiago');
-accounting.printEmployeesInformation();
+accounting.describe();
+// accounting.printEmployeesInformation();
 // const accountingCopy = { describe: accounting.describe };
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
 // accountingCopy.describe();
