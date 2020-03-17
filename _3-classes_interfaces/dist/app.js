@@ -6,8 +6,8 @@ class Department {
         // private id: string; // access modifier
         // private name: string; // access modifier
         this.employees = []; // access modifier
-        this.id = id;
-        this.name = name;
+        // this.id = id;
+        // this.name = name;
     }
     describe() {
         console.log(`Department: ${this.name}. Id: ${this.id}`);

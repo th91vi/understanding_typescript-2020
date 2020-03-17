@@ -3,9 +3,9 @@ class Department {
     // private name: string; // access modifier
     private employees: string[] = []; // access modifier
 
-    constructor(public id: string, public name: string){
-        this.id = id;
-        this.name = name;
+    constructor(public readonly id: string, public name: string){
+        // this.id = id;
+        // this.name = name;
     }
 
     describe(this: Department) {
