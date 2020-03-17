@@ -1,13 +1,15 @@
 class Department {
-    private name: string; // access modifier
+    // private id: string; // access modifier
+    // private name: string; // access modifier
     private employees: string[] = []; // access modifier
 
-    constructor(n: string){
-        this.name = n;
+    constructor(public id: string, public name: string){
+        this.id = id;
+        this.name = name;
     }
 
     describe(this: Department) {
-        console.log('Department: ' + this.name);
+        console.log(`Department: ${this.name}. Id: ${this.id}`);
     }
 
     addEmployee(employee: string){
@@ -20,7 +22,7 @@ class Department {
     }
 }
 
-const accounting = new Department('Accounting');
+const accounting = new Department('1', 'Accounting');
 
 accounting.describe();
 
