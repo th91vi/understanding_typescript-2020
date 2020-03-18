@@ -10,5 +10,6 @@ class Person {
 }
 let user1;
 user1 = new Person('Thiago');
+// user1.name = 'otto';
 user1.greet('Hello');
 console.log(user1);
