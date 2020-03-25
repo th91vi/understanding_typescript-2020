@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #292c35;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+}
+
+button {
+    color: #fff;
+    background: #bd93f9;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
